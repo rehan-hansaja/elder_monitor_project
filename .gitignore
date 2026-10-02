@@ -1,0 +1,11 @@
+venv/
+.venv/
+__pycache__/
+*.pyc
+.idea/
+.vscode/
+*.pt
+*.pkl
+data/videos/
+outputs/
+.env
