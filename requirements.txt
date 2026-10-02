@@ -1,0 +1,7 @@
+numpy
+opencv-python
+ultralytics
+pyyaml
+matplotlib
+anthropic        # optional: only if vlm_backend: anthropic
+python tests/test_synthetic.py
