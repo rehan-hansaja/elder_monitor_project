@@ -1,6 +1,6 @@
 # Only list what you want to change; see elder_monitor/config.py for every option.
 sample_fps: 2
-bed_polygon: [[0.657, 0.6361], [0.6414, 0.5069], [0.318, 0.5028], [0.2313, 0.6194]]
+bed_polygon: [[0.3734, 0.4648], [0.2896, 0.5741], [0.7063, 0.5556], [0.6719, 0.4426]]
   # from tools/select_bed.py (else auto-detect)
 vlm_backend: none        # set to "anthropic" (+ export ANTHROPIC_API_KEY) to enable the VLM second opinion
 # Demo-scale alert thresholds (a 5-20 min test video). For real night monitoring use e.g. 900 / 1800.

@@ -3,4 +3,3 @@ opencv-python
 ultralytics
 pyyaml
 matplotlib
-python tests/test_synthetic.py
