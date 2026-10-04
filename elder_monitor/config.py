@@ -8,7 +8,7 @@ class Config:
     # --- sampling / models
     sample_fps: float = 2.0
     yolo_pose_model: str = "yolov8m-pose.pt"
-    yolo_det_model: str = "yolov8m.pt"      # only used to auto-find the bed (COCO class 59)
+    yolo_det_model: str = "yolov8m.pt"      # only used to auto-find the bed
     det_conf: float = 0.25
     imgsz: int = 640
     kpt_conf: float = 0.3
@@ -46,12 +46,6 @@ class Config:
     monitor_unknown_sec: float = 30.0
     alert_floor_sec: float = 5.0
     caregiver_grace_sec: float = 5.0
-    # --- VLM
-    vlm_backend: str = "none"               # none | anthropic
-    vlm_model: str = "claude-sonnet-5-5"
-    vlm_frames: int = 3
-    vlm_min_conf: float = 0.7
-
 
 def load_config(path=None) -> Config:
     cfg = Config()

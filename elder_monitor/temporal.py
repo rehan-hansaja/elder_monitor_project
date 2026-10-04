@@ -3,7 +3,7 @@ from __future__ import annotations
 import numpy as np
 from .core import *
 
-# physically plausible direct transitions (symmetric); everything else is heavily penalised
+# physically plausible direct transitions (symmetric);
 _EDGES = [
     (LYING_IN_BED, SITTING_ON_BED),
     (SITTING_ON_BED, STANDING), (SITTING_ON_BED, SITTING_OUTSIDE_BED),
@@ -81,7 +81,7 @@ def coalesce(segs):
 
 
 def merge_short(segs, cfg):
-    """Absorb segments shorter than min_segment_sec into a neighbour (flicker removal)."""
+    """Absorb segments shorter than min_segment_sec into a neighbour."""
     segs = coalesce(segs)
     while len(segs) > 1:
         short = [i for i, s in enumerate(segs) if s.duration < cfg.min_segment_sec]

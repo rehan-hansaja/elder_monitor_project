@@ -2,7 +2,6 @@
 sample_fps: 2
 bed_polygon: [[0.3734, 0.4648], [0.2896, 0.5741], [0.7063, 0.5556], [0.6719, 0.4426]]
   # from tools/select_bed.py (else auto-detect)
-vlm_backend: none        # set to "anthropic" (+ export ANTHROPIC_API_KEY) to enable the VLM second opinion
-# Demo-scale alert thresholds (a 5-20 min test video). For real night monitoring use e.g. 900 / 1800.
+# Demo-scale alert thresholds. For real night monitoring use e.g. 900 / 1800.
 monitor_out_sec: 120
 alert_out_sec: 300

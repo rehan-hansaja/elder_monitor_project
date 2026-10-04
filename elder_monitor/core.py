@@ -4,14 +4,14 @@ from dataclasses import dataclass, field
 from typing import Optional
 import numpy as np
 
-# ---- states --------------------------------------------------------------
+# states
 LYING_IN_BED = "LYING_IN_BED"
 SITTING_ON_BED = "SITTING_ON_BED"
 SITTING_OUTSIDE_BED = "SITTING_OUTSIDE_BED"
 STANDING = "STANDING"
 WALKING = "WALKING"
 OUT_OF_BED = "OUT_OF_BED"            # away from bed / out of camera view
-LYING_OUTSIDE_BED = "LYING_OUTSIDE_BED"  # extra state: lying on floor/sofa (fall cue)
+LYING_OUTSIDE_BED = "LYING_OUTSIDE_BED"  # extra state: lying on floor/sofa
 UNKNOWN = "UNKNOWN"
 
 STATES = [LYING_IN_BED, SITTING_ON_BED, SITTING_OUTSIDE_BED, STANDING,
@@ -22,7 +22,7 @@ MOVED_AWAY_STATES = frozenset({WALKING, OUT_OF_BED, SITTING_OUTSIDE_BED, LYING_O
 SEVERITY = {"NORMAL": 0, "MONITOR": 1, "ALERT": 2}
 
 
-# ---- time helpers --------------------------------------------------------
+# time helpers
 def fmt_ts(sec: float) -> str:
     sec = int(round(sec))
     return f"{sec // 3600:02d}:{(sec % 3600) // 60:02d}:{sec % 60:02d}"
@@ -47,10 +47,10 @@ def parse_ts(s) -> float:
     return sec
 
 
-# ---- data classes --------------------------------------------------------
+# data classes
 @dataclass
 class FrameObs:
-    """Raw perception output for one sampled frame (patient only)."""
+    """Raw perception output for one sampled frame."""
     t: float
     persons: int = 0                       # all persons detected (caregiver flag)
     bbox: Optional[tuple] = None           # x1,y1,x2,y2 (px)
