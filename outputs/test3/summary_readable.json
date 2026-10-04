@@ -1,0 +1,18 @@
+{
+  "total_observation_time": "0m 33s",
+  "activity_summary": {
+    "lying_in_bed": "0m 00s",
+    "sitting_on_bed": "0m 09s",
+    "sitting_outside_bed": "0m 19s",
+    "standing": "0m 00s",
+    "walking": "0m 02s",
+    "out_of_bed": "0m 00s",
+    "lying_outside_bed": "0m 02s",
+    "unknown": "0m 00s"
+  },
+  "bed_summary": {
+    "time_in_bed": "0m 09s",
+    "time_out_of_bed": "0m 24s",
+    "bed_exit_count": 1
+  }
+}

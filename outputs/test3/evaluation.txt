@@ -1,0 +1,34 @@
+Frame-level state accuracy: 70.8%
+
+Per-class:
+  SITTING_ON_BED         P=1.00 R=1.00 F1=1.00 (9s GT)
+  SITTING_OUTSIDE_BED    P=0.63 R=1.00 F1=0.77 (12s GT)
+  STANDING               P=0.00 R=0.00 F1=0.00 (2s GT)
+  WALKING                P=1.00 R=0.29 F1=0.44 (7s GT)
+  LYING_OUTSIDE_BED      P=0.00 R=0.00 F1=0.00 (0s GT)
+  UNKNOWN                P=0.00 R=0.00 F1=0.00 (3s GT)
+
+Most frequent confusions (GT -> predicted, seconds):
+  WALKING -> SITTING_OUTSIDE_BED: 5s
+  UNKNOWN -> LYING_OUTSIDE_BED: 2s
+  STANDING -> SITTING_OUTSIDE_BED: 1s
+  UNKNOWN -> SITTING_OUTSIDE_BED: 0s
+
+State                       GT    Pred  AbsErr
+SITTING_ON_BED           00:09   00:09    0.0s
+SITTING_OUTSIDE_BED      00:12   00:19    7.0s
+STANDING                 00:02   00:00    1.5s
+WALKING                  00:07   00:02    5.0s
+LYING_OUTSIDE_BED        00:00   00:02    2.5s
+UNKNOWN                  00:03   00:00    3.0s
+Mean absolute duration error: 3.17s
+
+Bed events (match tolerance ±10.0s):
+  bed_exit: TP=1 FP=0 FN=0 precision=1.0 recall=1.0
+  bed_return: TP=0 FP=0 FN=0 precision=None recall=None
+
+Failure cases (longest mismatched runs):
+  00:20-00:25  GT=WALKING  PRED=SITTING_OUTSIDE_BED  (5s)
+  00:25-00:28  GT=UNKNOWN  PRED=LYING_OUTSIDE_BED  (2s)
+  00:31-00:32  GT=STANDING  PRED=SITTING_OUTSIDE_BED  (2s)
+  00:28-00:28  GT=UNKNOWN  PRED=SITTING_OUTSIDE_BED  (0s)

@@ -1,0 +1,37 @@
+[
+  {
+    "state": "SITTING_ON_BED",
+    "start": 0.0,
+    "end": 9.0,
+    "conf": 0.756,
+    "note": ""
+  },
+  {
+    "state": "WALKING",
+    "start": 9.0,
+    "end": 11.0,
+    "conf": 0.755,
+    "note": ""
+  },
+  {
+    "state": "SITTING_OUTSIDE_BED",
+    "start": 11.0,
+    "end": 25.0,
+    "conf": 0.758,
+    "note": ""
+  },
+  {
+    "state": "LYING_OUTSIDE_BED",
+    "start": 25.0,
+    "end": 27.5,
+    "conf": 0.807,
+    "note": ""
+  },
+  {
+    "state": "SITTING_OUTSIDE_BED",
+    "start": 27.5,
+    "end": 32.6,
+    "conf": 0.81,
+    "note": ""
+  }
+]

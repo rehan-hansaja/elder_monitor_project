@@ -1,0 +1,218 @@
+{
+  "frame_accuracy": 0.9338,
+  "per_class": {
+    "LYING_IN_BED": {
+      "precision": 0.963,
+      "recall": 1.0,
+      "f1": 0.981,
+      "support_sec": 13.0
+    },
+    "SITTING_ON_BED": {
+      "precision": 0.963,
+      "recall": 0.929,
+      "f1": 0.945,
+      "support_sec": 14.0
+    },
+    "STANDING": {
+      "precision": 0.983,
+      "recall": 0.983,
+      "f1": 0.983,
+      "support_sec": 29.0
+    },
+    "WALKING": {
+      "precision": 0.947,
+      "recall": 0.9,
+      "f1": 0.923,
+      "support_sec": 10.0
+    },
+    "LYING_OUTSIDE_BED": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support_sec": 0.0
+    },
+    "UNKNOWN": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support_sec": 2.0
+    }
+  },
+  "labels": [
+    "LYING_IN_BED",
+    "SITTING_ON_BED",
+    "STANDING",
+    "WALKING",
+    "LYING_OUTSIDE_BED",
+    "UNKNOWN"
+  ],
+  "confusion_matrix": [
+    [
+      26,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      1,
+      26,
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      57,
+      0,
+      1,
+      0
+    ],
+    [
+      0,
+      1,
+      1,
+      18,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      4,
+      0
+    ]
+  ],
+  "top_confusions": [
+    {
+      "gt": "UNKNOWN",
+      "pred": "LYING_OUTSIDE_BED",
+      "seconds": 2
+    },
+    {
+      "gt": "SITTING_ON_BED",
+      "pred": "LYING_IN_BED",
+      "seconds": 0
+    },
+    {
+      "gt": "SITTING_ON_BED",
+      "pred": "WALKING",
+      "seconds": 0
+    },
+    {
+      "gt": "STANDING",
+      "pred": "LYING_OUTSIDE_BED",
+      "seconds": 0
+    },
+    {
+      "gt": "WALKING",
+      "pred": "SITTING_ON_BED",
+      "seconds": 0
+    },
+    {
+      "gt": "WALKING",
+      "pred": "STANDING",
+      "seconds": 0
+    }
+  ],
+  "durations": {
+    "LYING_IN_BED": {
+      "gt": 13.0,
+      "pred": 13.5,
+      "abs_error": 0.5
+    },
+    "SITTING_ON_BED": {
+      "gt": 14.0,
+      "pred": 13.5,
+      "abs_error": 0.5
+    },
+    "STANDING": {
+      "gt": 29.0,
+      "pred": 29.0,
+      "abs_error": 0.0
+    },
+    "WALKING": {
+      "gt": 10.0,
+      "pred": 9.5,
+      "abs_error": 0.5
+    },
+    "LYING_OUTSIDE_BED": {
+      "gt": 0,
+      "pred": 2.5,
+      "abs_error": 2.5
+    },
+    "UNKNOWN": {
+      "gt": 2.0,
+      "pred": 0,
+      "abs_error": 2.0
+    }
+  },
+  "duration_mae_sec": 1.0,
+  "event_tolerance_sec": 10.0,
+  "bed_events": {
+    "bed_exit": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    "bed_return": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0
+    }
+  },
+  "failure_cases": [
+    {
+      "start": 26.0,
+      "end": 28.0,
+      "gt": "UNKNOWN",
+      "pred": "LYING_OUTSIDE_BED",
+      "length": 2.0
+    },
+    {
+      "start": 12.0,
+      "end": 12.5,
+      "gt": "SITTING_ON_BED",
+      "pred": "LYING_IN_BED",
+      "length": 0.5
+    },
+    {
+      "start": 15.5,
+      "end": 16.0,
+      "gt": "SITTING_ON_BED",
+      "pred": "WALKING",
+      "length": 0.5
+    },
+    {
+      "start": 19.5,
+      "end": 20.0,
+      "gt": "WALKING",
+      "pred": "STANDING",
+      "length": 0.5
+    },
+    {
+      "start": 25.5,
+      "end": 26.0,
+      "gt": "STANDING",
+      "pred": "LYING_OUTSIDE_BED",
+      "length": 0.5
+    }
+  ]
+}

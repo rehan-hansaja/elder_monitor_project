@@ -1,5 +1,6 @@
 """Offline test of the temporal/agent/event/alert/eval logic (no video, no models needed).
 Run:  python tests/test_synthetic.py"""
+
 import os, sys, random
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import numpy as np
@@ -57,7 +58,7 @@ assert ev["frame_accuracy"] > 0.9, ev["frame_accuracy"]
 assert ev["bed_events"]["bed_exit"]["precision"] == 1.0 and ev["bed_events"]["bed_exit"]["recall"] == 1.0
 print("\nSYNTHETIC PIPELINE TEST PASSED")
 
-# ---------------- per-frame classifier on hand-made keypoints ----------------
+# Per-frame classifier on hand-made keypoints
 bed = BedRegion([[100, 300], [500, 300], [500, 450], [100, 450]], (640, 480))
 
 

@@ -7,5 +7,9 @@ __pycache__/
 *.pt
 *.pkl
 data/videos/
-outputs/
 .env
+*.mp4
+*.avi
+*.mov
+outputs/**/obs_cache.pkl
+outputs/**/frame_states.json

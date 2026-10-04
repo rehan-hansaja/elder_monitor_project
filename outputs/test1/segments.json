@@ -1,0 +1,79 @@
+[
+  {
+    "state": "STANDING",
+    "start": 0.0,
+    "end": 5.0,
+    "conf": 0.578,
+    "note": ""
+  },
+  {
+    "state": "SITTING_ON_BED",
+    "start": 5.0,
+    "end": 10.0,
+    "conf": 0.592,
+    "note": ""
+  },
+  {
+    "state": "LYING_IN_BED",
+    "start": 10.0,
+    "end": 12.5,
+    "conf": 0.777,
+    "note": ""
+  },
+  {
+    "state": "SITTING_ON_BED",
+    "start": 12.5,
+    "end": 15.5,
+    "conf": 0.765,
+    "note": ""
+  },
+  {
+    "state": "WALKING",
+    "start": 15.5,
+    "end": 19.5,
+    "conf": 0.688,
+    "note": ""
+  },
+  {
+    "state": "STANDING",
+    "start": 19.5,
+    "end": 25.5,
+    "conf": 0.85,
+    "note": ""
+  },
+  {
+    "state": "LYING_OUTSIDE_BED",
+    "start": 25.5,
+    "end": 28.0,
+    "conf": 0.754,
+    "note": ""
+  },
+  {
+    "state": "STANDING",
+    "start": 28.0,
+    "end": 46.0,
+    "conf": 0.733,
+    "note": ""
+  },
+  {
+    "state": "WALKING",
+    "start": 46.0,
+    "end": 51.5,
+    "conf": 0.694,
+    "note": ""
+  },
+  {
+    "state": "SITTING_ON_BED",
+    "start": 51.5,
+    "end": 57.0,
+    "conf": 0.787,
+    "note": ""
+  },
+  {
+    "state": "LYING_IN_BED",
+    "start": 57.0,
+    "end": 68.5,
+    "conf": 0.496,
+    "note": ""
+  }
+]
