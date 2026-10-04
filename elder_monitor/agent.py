@@ -1,20 +1,18 @@
 """Agentic layer: decides WHEN more temporal context is needed and which tool to call.
-Tools: previous/next segments, location evidence (bed overlap), VLM look at a segment.
-Every decision is written to a Trace so you can show the reasoning."""
+Tools: previous/next segments, location evidence, VLM look at a segment."""
 from __future__ import annotations
 import numpy as np
 from .core import *
 from .temporal import coalesce
 from .events import detect_bed_events
 
-
 class TemporalAgent:
-    def __init__(self, cfg, frame_states, video=None, bed=None, vlm=None, trace=None):
+    def __init__(self, cfg, frame_states, video=None, bed=None, trace=None):
         self.cfg, self.fs, self.video, self.bed = cfg, frame_states, video, bed
-        self.vlm, self.trace = vlm, trace or Trace()
+        self.trace = trace or Trace()
         self.ts = np.array([f.t for f in frame_states]) if frame_states else np.array([])
 
-    # ---------------------------------------------------------------- tools
+    # Tools
     def evidence(self, t0, t1):
         """Tool: is the person on the bed during [t0,t1)? (uses visible frames only)"""
         sel = [f for f in self.fs if t0 <= f.t < t1 and "bed_frac" in f.feats]
@@ -22,14 +20,7 @@ class TemporalAgent:
             return {"mean_bed_frac": 0.0, "n": 0}
         return {"mean_bed_frac": float(np.mean([f.feats["bed_frac"] for f in sel])), "n": len(sel)}
 
-    def _vlm_look(self, seg):
-        if not (self.vlm and self.vlm.available and self.video):
-            return None
-        n = self.cfg.vlm_frames
-        times = list(np.linspace(seg.start, seg.end, n + 2)[1:-1])
-        return self.vlm.classify(self.video, times, self.bed)
-
-    # ---------------------------------------------------------------- uncertain segments
+    # uncertain segments
     def resolve_uncertain(self, segs):
         cfg, out = self.cfg, [s.copy() for s in segs]
         for i, s in enumerate(out):
@@ -53,19 +44,12 @@ class TemporalAgent:
                 self.trace.add(conclusion=f"Hidden between two in-bed states: label {new}")
                 s.state, s.note, s.conf = new, "hidden-in-bed", 0.5
                 continue
-            # 3) ask the VLM (if available) for a second opinion
-            res = self._vlm_look(s)
-            if res:
-                self.trace.add(action=f"VLM inspects {cfg.vlm_frames} frames", result=str(res))
-                if res["state"] != UNKNOWN and float(res.get("confidence", 0)) >= cfg.vlm_min_conf:
-                    s.state, s.conf, s.note = res["state"], float(res["confidence"]), "vlm"
-                    self.trace.add(conclusion=f"Relabelled by VLM as {s.state}")
-                    continue
+
             self.trace.add(conclusion="Keep UNKNOWN (insufficient evidence) rather than guess")
             if s.state != UNKNOWN and s.conf < cfg.low_conf:
                 s.state, s.note = UNKNOWN, "low-confidence"
         return coalesce(out)
 
-    # ---------------------------------------------------------------- events
+    # events
     def detect_events(self, segs):
         return detect_bed_events(segs, self.cfg, evidence_fn=self.evidence, trace=self.trace)

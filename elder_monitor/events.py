@@ -31,7 +31,7 @@ def detect_bed_events(segs, cfg, evidence_fn=None, trace: Trace = None):
 
     while i < n:
         s = segs[i]
-        # ------------------------------------------------ in bed
+        # in bed
         if s.state in IN_BED_STATES:
             if loc == "out":                                   # candidate RETURN
                 k = _stretch_end(segs, i)
@@ -56,7 +56,7 @@ def detect_bed_events(segs, cfg, evidence_fn=None, trace: Trace = None):
             loc, last_in, i = "in", i, i + 1
             continue
 
-        # ------------------------------------------------ out of bed
+        # out of bed
         if s.state in OUT_STATES:
             if loc == "unknown":
                 loc = "out"; i += 1; continue

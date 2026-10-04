@@ -1,4 +1,5 @@
-"""CLI:  python -m elder_monitor.run --video v.mp4 --out outputs/run1 [--gt gt.csv] [--annotated]"""
+"""CLI:  python -m elder_monitor.run --video data/videos/test1.mp4 --out outputs/test1 --gt data/gt/test1.csv --annotated"""
+
 from __future__ import annotations
 import argparse, json, os
 from .config import load_config
@@ -7,7 +8,6 @@ from .perception import video_meta, load_bed, extract_observations
 from .classifier import FrameClassifier
 from .pipeline import analyze_states
 from .report import save_all
-from .vlm import make_vlm
 
 
 def main():
@@ -27,7 +27,7 @@ def main():
     bed = load_bed(cfg, a.video, a.out)
     obs = extract_observations(cfg, a.video, bed, os.path.join(a.out, "obs_cache.pkl"))
     fstates = FrameClassifier(cfg, bed).run(obs)
-    res = analyze_states(fstates, meta["duration"], cfg, video=a.video, bed=bed, vlm=make_vlm(cfg))
+    res = analyze_states(fstates, meta["duration"], cfg, video=a.video, bed=bed)
     save_all(a.out, res["segments"], res["events"], res["summary"], res["readable"], res["trace"], fstates)
 
     print("\n=== TIMELINE ===\n" + "\n".join(f"{fmt_mmss(s.start)} - {fmt_mmss(s.end)} {s.state}" for s in res["segments"]))

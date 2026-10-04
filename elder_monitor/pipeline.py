@@ -7,11 +7,11 @@ from .alerts import apply_event_decisions, evaluate_alerts
 from .report import build_summary
 
 
-def analyze_states(frame_states, duration, cfg, video=None, bed=None, vlm=None):
+def analyze_states(frame_states, duration, cfg, video=None, bed=None):
     trace = Trace()
     path = viterbi_decode(frame_states, cfg)
     segs = merge_short(build_segments(frame_states, path, duration), cfg)
-    agent = TemporalAgent(cfg, frame_states, video, bed, vlm, trace)
+    agent = TemporalAgent(cfg, frame_states, video, bed, trace=trace)
     segs = merge_short(agent.resolve_uncertain(segs), cfg)
     events = agent.detect_events(segs)
     apply_event_decisions(events, cfg)

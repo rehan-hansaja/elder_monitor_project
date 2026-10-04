@@ -51,7 +51,7 @@ class FrameClassifier:
         self.last_bed_frac = 0.0
         self.ref_h = None                 # running estimate of standing bbox height
 
-    # ---------------------------------------------------------- public
+    # public
     def run(self, observations):
         return [self.step(o) for o in observations]
 
@@ -68,7 +68,7 @@ class FrameClassifier:
                 if k in ("bed_frac", "torso_angle", "knee_ratio", "speed", "feet_off_bed", "hip_in_bed", "kpt_vis")}
         return FrameState(obs.t, state, scores[state], scores, reason, obs.persons, keep)
 
-    # ---------------------------------------------------------- helpers
+    # helpers
     def _speed(self, t, f):
         self.hist.append((t, f["cx"], f["cy"], f["body_h"]))
         while self.hist and self.hist[0][0] < t - self.cfg.speed_window_sec:
@@ -100,7 +100,7 @@ class FrameClassifier:
             return self._fs(obs, OUT_OF_BED, 0.65, f"not visible for {miss:.0f}s after being off-bed -> left view")
         return self._fs(obs, UNKNOWN, 0.5, f"not visible for {miss:.0f}s, cannot infer")
 
-    # ---------------------------------------------------------- rules
+    # rules
     def _classify(self, f):
         c = self.cfg
         vis, bed, speed, ang, kr = f["kpt_vis"], f["bed_frac"], f["speed"], f["torso_angle"], f["knee_ratio"]

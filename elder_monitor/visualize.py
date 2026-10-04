@@ -1,4 +1,4 @@
-"""Annotated video + failure-case frames (for the README / interview)."""
+"""Annotated video + failure-case frames."""
 from __future__ import annotations
 import os
 import cv2, numpy as np

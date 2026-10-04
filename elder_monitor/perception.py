@@ -5,7 +5,7 @@ import numpy as np
 from .core import FrameObs
 
 
-# ---------------------------------------------------------------- video
+# video
 def video_meta(path):
     import cv2
     cap = cv2.VideoCapture(path)
@@ -45,7 +45,7 @@ def read_frame_at(path, t):
     return frame if ok else None
 
 
-# ---------------------------------------------------------------- bed
+# bed
 class BedRegion:
     def __init__(self, poly_px, wh):
         import cv2
@@ -114,7 +114,7 @@ def _auto_detect_bed(cfg, video, meta):
     return [[x1, y1], [x2, y1], [x2, y2], [x1, y2]]
 
 
-# ---------------------------------------------------------------- detection
+# detection
 class Perception:
     def __init__(self, cfg):
         from ultralytics import YOLO
