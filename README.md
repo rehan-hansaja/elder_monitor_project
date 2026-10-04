@@ -7,7 +7,7 @@ An agentic vision system that analyses a continuous indoor video of an elderly p
 3. How long they spend in each state,
 4. a **NORMAL / MONITOR / ALERT** decision with the reasoning behind it.
 
-The emphasis is on temporal understanding, state tracking and agentic decision-making rather than a polished application. Everything runs from a CLI; there is no frontend.
+The emphasis is on temporal understanding, state tracking and agentic decision-making rather than a polished application. Everything runs from a CLI.
 
 ---
 
