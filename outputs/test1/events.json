@@ -1,0 +1,32 @@
+[
+  {
+    "event": "bed_return",
+    "start_time": "00:00:05",
+    "confirmed_time": "00:00:10",
+    "previous_state": "standing",
+    "current_state": "lying_in_bed",
+    "confidence": 0.71,
+    "decision": "NORMAL"
+  },
+  {
+    "event": "bed_exit",
+    "start_time": "00:00:16",
+    "confirmed_time": "00:00:18",
+    "previous_state": "sitting_on_bed",
+    "current_state": "walking",
+    "confidence": 0.71,
+    "decision": "MONITOR",
+    "returned": true,
+    "final_decision": "NORMAL",
+    "decision_reason": "returned after 36s (short trip)"
+  },
+  {
+    "event": "bed_return",
+    "start_time": "00:00:52",
+    "confirmed_time": "00:00:57",
+    "previous_state": "walking",
+    "current_state": "lying_in_bed",
+    "confidence": 0.64,
+    "decision": "NORMAL"
+  }
+]

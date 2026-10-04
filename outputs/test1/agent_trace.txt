@@ -1,0 +1,22 @@
+[001] @00:00:05
+    Observation: Person now SITTING_ON_BED after being out of bed.
+    Thought    : Was out of bed; need to check the in-bed state is sustained, not a pass-by.
+    Action     : look ahead 8s
+    Result     : in-bed for 10s, lies down at 00:00:10
+    Conclusion : BED_RETURN confirmed
+[002] @00:00:16
+    Observation: SITTING_ON_BED -> WALKING: person is beside/away from the bed.
+    Thought    : One transition is not enough to call a bed exit; need what happened before and after.
+    Action     : inspect previous segment
+    Result     : SITTING_ON_BED until 00:00:16 (conf 0.76)
+[003]
+    Action     : inspect following segments up to the next in-bed stretch
+    Result     : WALKING(4s) -> STANDING(6s) -> LYING_OUTSIDE_BED(2s) -> STANDING(18s) -> WALKING(6s) -> back SITTING_ON_BED at 00:00:52
+[004]
+    Conclusion : BED_EXIT confirmed at 00:00:18 (started 00:00:16); off bed for 36s
+[005] @00:00:52
+    Observation: Person now SITTING_ON_BED after being out of bed.
+    Thought    : Was out of bed; need to check the in-bed state is sustained, not a pass-by.
+    Action     : look ahead 8s
+    Result     : in-bed for 17s, lies down at 00:00:57
+    Conclusion : BED_RETURN confirmed

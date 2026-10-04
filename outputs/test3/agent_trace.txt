@@ -1,0 +1,10 @@
+[001] @00:00:09
+    Observation: SITTING_ON_BED -> WALKING: person is beside/away from the bed.
+    Thought    : One transition is not enough to call a bed exit; need what happened before and after.
+    Action     : inspect previous segment
+    Result     : SITTING_ON_BED until 00:00:09 (conf 0.76)
+[002]
+    Action     : inspect following segments up to the next in-bed stretch
+    Result     : WALKING(2s) -> SITTING_OUTSIDE_BED(14s) -> LYING_OUTSIDE_BED(2s) -> SITTING_OUTSIDE_BED(5s) (until end of video)
+[003]
+    Conclusion : BED_EXIT confirmed at 00:00:11 (started 00:00:09); off bed for 24s, still out at end of video

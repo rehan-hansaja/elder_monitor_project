@@ -1,0 +1,22 @@
+{
+  "observation_duration_sec": 33,
+  "activity_duration_sec": {
+    "lying_in_bed": 0,
+    "sitting_on_bed": 9,
+    "sitting_outside_bed": 19,
+    "standing": 0,
+    "walking": 2,
+    "out_of_bed": 0,
+    "lying_outside_bed": 2,
+    "unknown": 0
+  },
+  "bed_exit_count": 1,
+  "bed_return_count": 0,
+  "total_in_bed_sec": 9,
+  "total_out_of_bed_sec": 24,
+  "bedside_or_unknown_sec": 0,
+  "longest_out_of_bed_period_sec": 24,
+  "final_state": "sitting_outside_bed",
+  "overall_decision": "MONITOR",
+  "alerts": []
+}

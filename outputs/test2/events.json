@@ -1,0 +1,23 @@
+[
+  {
+    "event": "bed_return",
+    "start_time": "00:00:06",
+    "confirmed_time": "00:00:14",
+    "previous_state": "walking",
+    "current_state": "sitting_on_bed",
+    "confidence": 0.75,
+    "decision": "NORMAL"
+  },
+  {
+    "event": "bed_exit",
+    "start_time": "00:00:26",
+    "confirmed_time": "00:00:28",
+    "previous_state": "sitting_on_bed",
+    "current_state": "walking",
+    "confidence": 0.71,
+    "decision": "MONITOR",
+    "returned": false,
+    "final_decision": "MONITOR",
+    "decision_reason": "still out of bed at end of video"
+  }
+]
