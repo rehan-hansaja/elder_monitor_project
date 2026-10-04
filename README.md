@@ -187,7 +187,7 @@ The three test clips were cut from the **GMDCSA24** dataset (a human fall-detect
 
 | Clip | Length | Resolution | Download |
 |---|---|---|---|
-| test1 | 68 s | 1920×1080 | [Google Drive]((https://drive.google.com/file/d/1lImvbCBa2ukN3UaySNKcUiOEvecqonNj/view?usp=drive_link)) |
+| test1 | 68 s | 1920×1080 | [Google Drive](https://drive.google.com/file/d/1lImvbCBa2ukN3UaySNKcUiOEvecqonNj/view?usp=drive_link) |
 | test2 | 45 s | 1920×1080 | [Google Drive](https://drive.google.com/file/d/1Tz0jEuqY6i2Jgona94cuasZVeRrO_CBB/view?usp=drive_link) |
 | test3 | 33 s | 1920×1080 | [Google Drive](https://drive.google.com/file/d/1O8iuIAsRPgcl8PArbSK5q1LdD5vGSMx6/view?usp=drive_link) |
 
