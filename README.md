@@ -53,8 +53,6 @@ video ──► frame sampler (2 fps)
 
 **Hidden person:** if the person disappears while last seen *on the bed*, the state is carried forward for up to 60 s with decaying confidence (blanket / occlusion). If last seen *off the bed*, after 3 s the state becomes `OUT_OF_BED` (left the camera view).
 
-**No VLM is used.** Vision analysis comes from pretrained pose estimation and person detection, combined with bed-region detection and temporal modelling.
-
 ---
 
 ## 2. Setup and run
