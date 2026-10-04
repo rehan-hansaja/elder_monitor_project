@@ -13,29 +13,7 @@ The emphasis is on temporal understanding, state tracking and agentic decision-m
 
 ## 1. Architecture
 
-```
-video ──► frame sampler (2 fps)
-             │
-             ▼
-   YOLOv8-pose  (person boxes + 17 keypoints)
-             │            └─► PatientSelector (locks onto the patient; other people = caregiver)
-             │            Bed region (manual polygon, or YOLO "bed" class as fallback)
-             ▼
-   FrameClassifier   rules on torso angle, knee/hip geometry, bed overlap, motion speed,
-             │       hidden-person logic  →  soft scores per state (UNKNOWN when unsure)
-             ▼
-   Temporal model    Viterbi decoding over a state-transition graph
-             │       → segments → short-segment merging
-             ▼
-   TemporalAgent     observe → think → act → conclude (logged to agent_trace.txt)
-             │       tools: previous / next segments, bed-overlap evidence
-             │       • resolves UNKNOWN / low-confidence segments
-             │       • verifies bed exit / return using look-back and look-ahead context
-             ▼
-   Alert rules  ──►  NORMAL / MONITOR / ALERT
-             ▼
-   Outputs: timeline, duration summary, bed events, plots, evaluation vs. ground truth
-```
+![System architecture](docs/architecture.png)
 
 ### Design choices
 
@@ -199,9 +177,32 @@ Not every case is covered by my test clips (see Limitations).
 
 ---
 
-## 6. Results
+## 6. Test data
 
-Three clips were recorded and labelled by hand (1920×1080, fixed camera). Detailed results for `test1` are below. **The full outputs for all three clips are in the `outputs/` folder:** `outputs/test1/`, `outputs/test2/` and `outputs/test3/` (timeline, summary, events, evaluation, failure frames).
+The three test clips were cut from the **GMDCSA24** dataset (a human fall-detection video dataset recorded in indoor home settings) and trimmed to the scenarios I wanted to test (leaving the bed, sitting on a chair, returning to bed, lying on the floor, and so on).
+
+- **Source dataset:** Ekram Alam, *GMDCSA24: A Dataset for Human Fall Detection in Videos* (v2.0), Zenodo, 2024. DOI: [10.5281/zenodo.12921216](https://doi.org/10.5281/zenodo.12921216) · [dataset page](https://zenodo.org/records/12921216)
+- **License:** Creative Commons Attribution 4.0 (CC BY 4.0). The clips below are **modified** (trimmed from the original videos), and all credit for the original footage goes to the dataset's author.
+- **My changes:** I selected short segments from the original videos. I did not edit the content of the frames. I labelled the ground truth (`data/gt/test1.csv`, `test2.csv`, `test3.csv`) by hand.
+
+| Clip | Length | Resolution | Download |
+|---|---|---|---|
+| test1 | 68 s | 1920×1080 | [Google Drive]((https://drive.google.com/file/d/1lImvbCBa2ukN3UaySNKcUiOEvecqonNj/view?usp=drive_link)) |
+| test2 | 45 s | 1920×1080 | [Google Drive](https://drive.google.com/file/d/1Tz0jEuqY6i2Jgona94cuasZVeRrO_CBB/view?usp=drive_link) |
+| test3 | 33 s | 1920×1080 | [Google Drive](https://drive.google.com/file/d/1O8iuIAsRPgcl8PArbSK5q1LdD5vGSMx6/view?usp=drive_link) |
+
+All three clips in one folder: [Google Drive folder](https://drive.google.com/drive/folders/1xIu0jweFXm1f2zwo9tBAWo6SLTJZxQzr?usp=sharing)
+
+To reproduce the results, download the clips into `data/videos/` (files named `test1.mp4`, `test2.mp4`, `test3.mp4`) and run the commands in §2.
+
+The clips are not stored in this repository (see `.gitignore`) because of their size.
+
+
+
+
+## 7. Results
+
+Three clips, trimmed from the GMDCSA24 dataset (see §6), were labelled by hand (1920×1080, fixed camera). Detailed results for `test1` are below. **The full outputs for all three clips are in the `outputs/` folder:** `outputs/test1/`, `outputs/test2/` and `outputs/test3/` (timeline, summary, events, evaluation, failure frames).
 
 ### Summary across all clips
 
@@ -328,7 +329,7 @@ The remaining mismatches in the evaluation are sub-second shifts of segment boun
 
 ---
 
-## 7. Limitations and what I would do with more time
+## 8. Limitations and what I would do with more time
 
 - Walking detection is the weakest part (test3 recall 0.29). I would add ankle motion, a per-person standing-height reference and a longer motion window.
 - The bed-overlap rule is sensitive to the bed polygon (failure case 2). A segmentation-based bed mask, or deciding on hip position with context from the previous state, would be more robust.
